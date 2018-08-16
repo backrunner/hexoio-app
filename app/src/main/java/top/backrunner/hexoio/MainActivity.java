@@ -2,6 +2,7 @@ package top.backrunner.hexoio;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
@@ -73,6 +74,19 @@ public class MainActivity extends AppCompatActivity
                     mWebView.scrollTo(0,0);
                 }
                 super.onPageFinished(view, url);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                String url = request.getUrl().toString();
+                if (url.contains(".html")){
+                    Intent intent = new Intent(MainActivity.this, mainText.class);
+                    intent.putExtra("url",url);
+                    startActivity(intent);
+                    return true;
+                } else {
+                    return super.shouldOverrideUrlLoading(view, request);
+                }
             }
         });
     }
