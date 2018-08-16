@@ -10,7 +10,7 @@
 
     <WebView
         android:layout_width="360dp"
-        android:layout_height="560dp"
+        android:layout_height="564dp"
         android:id="@+id/textWebview"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />

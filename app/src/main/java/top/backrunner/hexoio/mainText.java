@@ -2,16 +2,20 @@ package top.backrunner.hexoio;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 
 public class mainText extends AppCompatActivity {
@@ -41,7 +45,19 @@ public class mainText extends AppCompatActivity {
         Intent intent = getIntent();
         textWebview.loadUrl(intent.getExtras().getString("url"));
 
-        textWebview.setWebViewClient(new WebViewClient(){});
+        textWebview.setWebViewClient(new WebViewClient(){
+            @Nullable
+            @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                if (request.getUrl().toString().contains("changyan")){
+                    String noresponse = "";
+                    WebResourceResponse intercepted = new WebResourceResponse("text/javascript","utf8", new ByteArrayInputStream(noresponse.getBytes()));
+                    return intercepted;
+                } else {
+                    return super.shouldInterceptRequest(view, request);
+                }
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

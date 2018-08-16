@@ -24,6 +24,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.util.Log;
@@ -79,9 +80,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 String url = request.getUrl().toString();
-                if (url.contains(".html")){
+                if (url.contains(".html")) {
                     Intent intent = new Intent(MainActivity.this, mainText.class);
-                    intent.putExtra("url",url);
+                    intent.putExtra("url", url);
                     startActivity(intent);
                     return true;
                 } else {
