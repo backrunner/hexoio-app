@@ -1,6 +1,7 @@
 package top.backrunner.hexoio;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -19,13 +20,18 @@ import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 
 public class mainText extends AppCompatActivity {
+
     private WebView textWebview;
+
+    private String originUrl;
+    private String currentUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //set actionbar
         setContentView(R.layout.activity_main_text);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.textToolbar);
         setSupportActionBar(toolbar);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -43,7 +49,8 @@ public class mainText extends AppCompatActivity {
         textWebview.clearCache(false);
 
         Intent intent = getIntent();
-        textWebview.loadUrl(intent.getExtras().getString("url"));
+        originUrl = intent.getExtras().getString("url");
+        textWebview.loadUrl(originUrl);
 
         textWebview.setWebViewClient(new WebViewClient(){
             @Nullable
@@ -57,6 +64,12 @@ public class mainText extends AppCompatActivity {
                     return super.shouldInterceptRequest(view, request);
                 }
             }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                currentUrl = url;
+                super.onPageStarted(view, url, favicon);
+            }
         });
     }
     @Override
@@ -67,5 +80,14 @@ public class mainText extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!currentUrl.equals(originUrl)){
+            textWebview.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

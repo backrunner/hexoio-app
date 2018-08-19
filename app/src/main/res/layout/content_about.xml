@@ -5,16 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".mainText"
-    tools:showIn="@layout/activity_main_text">
-
-    <WebView
-        android:id="@+id/textWebview"
-        android:layout_width="0dp"
-        android:layout_height="564dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".aboutActivity"
+    tools:showIn="@layout/activity_about">
 
 </android.support.constraint.ConstraintLayout>

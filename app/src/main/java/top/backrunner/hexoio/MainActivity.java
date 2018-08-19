@@ -193,7 +193,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_search) {
             mWebView.loadUrl("javascript:searchTrigger();");
         } else if (id == R.id.nav_settings) {
-
+            Intent settingIntent = new Intent(MainActivity.this,setting.class);
+            startActivity(settingIntent);
         } else if (id == R.id.nav_exit) {
             AlertDialog ad = new AlertDialog.Builder(this).setTitle("确认退出吗？").setPositiveButton("确定",
                     new DialogInterface.OnClickListener() {

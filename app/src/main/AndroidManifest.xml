@@ -25,6 +25,14 @@
             android:name=".mainText"
             android:label="@string/title_activity_main_text"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".setting"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".aboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
