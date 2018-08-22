@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setAllowContentAccess(true);
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webSettings.setUserAgentString("app/hexoio");
         mWebView.clearCache(false);
         mWebView.loadUrl("https://io.backrunner.top");

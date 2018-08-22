@@ -35,7 +35,8 @@ public class setting extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 switch (position){
                     case 0:
-                        Log.d("SETTING","0 clicked");
+                        Intent cacheManageIntent = new Intent(setting.this,cacheManage.class);
+                        startActivity(cacheManageIntent);
                         break;
                     case 1:
                         Intent aboutIntent = new Intent(setting.this,aboutActivity.class);
@@ -56,7 +57,7 @@ public class setting extends AppCompatActivity {
 
     private void setRecyclerViewValues(){
         ArrayList<String> names = new ArrayList<>();
-        names.add("缓存管理");
+        names.add("缓存清理");
         names.add("关于");
         //set adapter
         adapter.setContents(names);

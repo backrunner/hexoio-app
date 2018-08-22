@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class aboutActivity extends AppCompatActivity {
 
@@ -22,6 +25,9 @@ public class aboutActivity extends AppCompatActivity {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        TextView versionView = (TextView) findViewById(R.id.versionText);
+        versionView.setText(BuildConfig.VERSION_NAME);
     }
 
     @Override
