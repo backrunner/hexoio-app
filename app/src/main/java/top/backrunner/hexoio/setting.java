@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -29,16 +30,21 @@ public class setting extends AppCompatActivity {
         //set layout
         recyclerView = (RecyclerView)findViewById(R.id.settingRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         adapter = new settingAdapter(this);
         adapter.setOnItemClickListener(new settingAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 switch (position){
                     case 0:
+                        Intent updateSettingIntent = new Intent(setting.this,updateSetting.class);
+                        startActivity(updateSettingIntent);
+                        break;
+                    case 1:
                         Intent cacheManageIntent = new Intent(setting.this,cacheManage.class);
                         startActivity(cacheManageIntent);
                         break;
-                    case 1:
+                    case 2:
                         Intent aboutIntent = new Intent(setting.this,aboutActivity.class);
                         startActivity(aboutIntent);
                         break;
@@ -57,6 +63,7 @@ public class setting extends AppCompatActivity {
 
     private void setRecyclerViewValues(){
         ArrayList<String> names = new ArrayList<>();
+        names.add("自动更新");
         names.add("缓存清理");
         names.add("关于");
         //set adapter

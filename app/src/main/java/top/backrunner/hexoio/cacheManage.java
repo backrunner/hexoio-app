@@ -2,10 +2,12 @@ package top.backrunner.hexoio;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -36,6 +38,7 @@ public class cacheManage extends AppCompatActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.cacheManageRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         adapter = new simpleTextAdapter(this);
         adapter.setOnItemClickListener(new simpleTextAdapter.OnItemClickListener() {
             @Override
@@ -45,7 +48,12 @@ public class cacheManage extends AppCompatActivity {
                         try {
                             DataCacheManager.clearAllCache(getApplicationContext());
                             Toast toast = Toast.makeText(cacheManage.this,"缓存清理成功" ,Toast.LENGTH_SHORT);
-                            setRecyclerViewValues();
+                            new Handler().postDelayed(new Runnable(){
+                                public void run() {
+                                    //要执行的任务
+                                    setRecyclerViewValues();
+                                }
+                            }, 500);
                             toast.show();
                         } catch (Exception e){
                             Toast toast = Toast.makeText(cacheManage.this,"缓存清理失败" ,Toast.LENGTH_SHORT);

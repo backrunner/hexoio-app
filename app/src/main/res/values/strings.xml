@@ -10,5 +10,6 @@
     <string name="title_activity_setting">设置</string>
     <string name="title_activity_about">关于</string>
     <string name="title_activity_cache_manage">缓存清理</string>
-    <string name="action_settings"></string>
+    <string name="action_share">分享</string>
+    <string name="title_activity_update_setting">自动更新</string>
 </resources>

@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="67" />
+                                                <entry key="scalingPercent" value="101" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -35,10 +35,10 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundLayerName" value="img_launcher_b" />
-                                      <entry key="foregroundImage" value="F:\Projects\Photoshop Project\icons\hexoio.jpg" />
-                                      <entry key="foregroundLayerName" value="img_launcher_f" />
-                                      <entry key="outputName" value="img_launcher" />
+                                      <entry key="backgroundLayerName" value="ic_note_avatar_b" />
+                                      <entry key="foregroundImage" value="F:\Projects\Photoshop Project\头像\io.backrunner.top.jpg" />
+                                      <entry key="foregroundLayerName" value="ic_note_avatar_f" />
+                                      <entry key="outputName" value="ic_note_avatar" />
                                     </map>
                                   </option>
                                 </PersistentState>

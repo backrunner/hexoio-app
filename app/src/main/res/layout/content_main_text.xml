@@ -8,13 +8,24 @@
     tools:context=".mainText"
     tools:showIn="@layout/activity_main_text">
 
-    <WebView
-        android:id="@+id/textWebview"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/text_swipeRefreshLayout"
         android:layout_width="0dp"
-        android:layout_height="564dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <WebView
+            android:id="@+id/textWebview"
+            android:layout_width="0dp"
+            android:layout_height="564dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -2,6 +2,8 @@
 *.apk
 *.ap_
 
+[Aa]pp
+
 # Files for the Dalvik VM
 *.dex
 
@@ -25,3 +27,5 @@ proguard/
 
 # Log Files
 *.log
+
+*.jks
