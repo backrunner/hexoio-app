@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity
                 //外链检测
                 if (!url.contains("io.backrunner.top")) {
                     Uri externalUri = Uri.parse(url);
-                    Intent intent = new Intent(Intent.ACTION_VIEW,externalUri);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, externalUri);
                     startActivity(intent);
                     return true;
                 } else {
@@ -193,20 +193,6 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
             }
-
-            @Nullable
-            @Override
-            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-                //refuse to load changyan script
-                if (request.getUrl().toString().contains("changyan")){
-                    String noresponse = "";
-                    WebResourceResponse intercepted = new WebResourceResponse("text/javascript","utf8", new ByteArrayInputStream(noresponse.getBytes()));
-                    return intercepted;
-                } else {
-                    return super.shouldInterceptRequest(view, request);
-                }
-            }
-
         });
 
         mWebView.setWebChromeClient(new WebChromeClient(){

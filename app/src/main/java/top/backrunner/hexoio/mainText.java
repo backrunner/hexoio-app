@@ -55,6 +55,18 @@ public class mainText extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //浏览器唤起
+        Intent awakeIntent = getIntent();
+        String awakeAction = awakeIntent.getAction();
+        if (Intent.ACTION_VIEW.equals(awakeAction)){
+            Uri uri = awakeIntent.getData();
+            if (uri != null){
+                originUrl = uri.toString();
+            }
+        } else {
+            originUrl = awakeIntent.getExtras().getString("url");
+        }
+
         //set actionbar
         setContentView(R.layout.activity_main_text);
         Toolbar toolbar = (Toolbar) findViewById(R.id.textToolbar);
@@ -87,8 +99,6 @@ public class mainText extends AppCompatActivity{
         webSettings.setUserAgentString("app/hexoio");
         textWebview.clearCache(false);
 
-        Intent intent = getIntent();
-        originUrl = intent.getExtras().getString("url");
         textWebview.loadUrl(originUrl);
 
 
@@ -221,11 +231,8 @@ public class mainText extends AppCompatActivity{
                 web.setTitle(currentTitle);//标题
                 web.setThumb(thumb);  //缩略图
                 web.setDescription(currentDesc);//描述
-                /*new ShareAction(mainText.this).withMedia(web)
-                        .setDisplayList(SHARE_MEDIA.QQ,SHARE_MEDIA.QZONE,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.WEIXIN_FAVORITE,SHARE_MEDIA.SMS,SHARE_MEDIA.EMAIL)
-                        .open();*/
                 new ShareAction(mainText.this).withMedia(web)
-                        .setDisplayList(SHARE_MEDIA.QQ,SHARE_MEDIA.QZONE,SHARE_MEDIA.SMS,SHARE_MEDIA.EMAIL)
+                        .setDisplayList(SHARE_MEDIA.QQ,SHARE_MEDIA.QZONE,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.WEIXIN_FAVORITE,SHARE_MEDIA.SMS,SHARE_MEDIA.EMAIL)
                         .open();
                 return true;
             case android.R.id.home:

@@ -47,17 +47,15 @@ public class cacheManage extends AppCompatActivity {
                     case 1:
                         try {
                             DataCacheManager.clearAllCache(getApplicationContext());
-                            Toast toast = Toast.makeText(cacheManage.this,"缓存清理成功" ,Toast.LENGTH_SHORT);
+                            Toast.makeText(cacheManage.this,"缓存清理成功" ,Toast.LENGTH_SHORT).show();
                             new Handler().postDelayed(new Runnable(){
                                 public void run() {
                                     //要执行的任务
                                     setRecyclerViewValues();
                                 }
                             }, 500);
-                            toast.show();
                         } catch (Exception e){
-                            Toast toast = Toast.makeText(cacheManage.this,"缓存清理失败" ,Toast.LENGTH_SHORT);
-                            toast.show();
+                            Toast.makeText(cacheManage.this,"缓存清理失败" ,Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
                         break;
